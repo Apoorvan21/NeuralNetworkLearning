@@ -1,4 +1,4 @@
-import Layer
+from Layer import Layer
 
 class NeuralNetwork:
   def __init__(self,layer_size):

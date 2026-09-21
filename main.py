@@ -1,12 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from NeuralNetwork import NeuralNetwork
 
 def lossFunction(y,y_pred):
-  avg = 0
-  for i in range(len(y)):
-    avg += (y[i] - y_pred[i])**2
-  loss = (0.5) * avg/len(y)
-
+  loss = (0.5) * np.mean((y - y_pred)**2)
   return loss
 
 def train(nn,x,y,epochs,a):
@@ -20,9 +17,10 @@ def train(nn,x,y,epochs,a):
     nn.update(a)
   return losses
 
-n = NeuralNetwork([2,4,5,1])
-x = np.array([0.25,0.42])
-y = np.array([2.1])
+nn = NeuralNetwork([2,4,5,1])
+x = np.array([[0.25, 0.50], [0.42, 0.30]])
+
+y = np.array([[2.1, 3.0]])
 
 print(nn.forward(x))
 
